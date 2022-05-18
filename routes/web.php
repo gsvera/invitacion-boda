@@ -17,4 +17,5 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/invitados', [Controller::class, 'listaInvitados']);
+Route::post('/invitados', [Controller::class, 'listaInvitados']);
+Route::get('/invitacion', [Controller::class, 'invitacion']);

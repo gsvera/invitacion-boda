@@ -24,4 +24,26 @@ class Invitado extends Model
     {
         return $this->listaInvitados;
     }
+    public function validarCodigo($codigo)
+    {
+        $res = [];
+        foreach($this->listaInvitados as $clave => $valor)
+        {
+            if($valor['codigo'] == $codigo)
+            {
+                $res["error"] = false;
+                $res["data"] = $valor;
+                $res["mensaje"] = "";
+                break;
+            }
+            else
+            {
+                $res["error"] = true;
+                $res["data"] = [];
+                $res["mensaje"] = "Codigo de invitado invalido";
+            }
+        }
+
+        return $res;
+    }
 }

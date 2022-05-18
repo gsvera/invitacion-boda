@@ -19,8 +19,8 @@ class Controller extends BaseController
         $respuesta = new Respuesta;
         $invitado = new Invitado;
         try{
-            $lista = $invitado->obtenerLista();
-            $respuesta->data = $lista;
+            $lista = $invitado->validarCodigo(request('codigo'));
+            $respuesta->setRespuesta($lista);
         }catch(Exception $e)
         {
             $respuesta->error = false;
@@ -28,5 +28,21 @@ class Controller extends BaseController
         }
         
         return response()->json($respuesta->obtenerRespuesta());
+    }
+    public function invitacion()
+    {
+        $invitado = new Invitado;
+        try{
+            $validar = $invitado->validarCodigo(request('codigo'));
+            if($validar["error"] == true)
+            {
+                return view('index');
+            }
+        }
+        catch(Exception $e)
+        {
+            return "Exception: ".$e->getMessage();
+        }
+        return view('home', ['codigo' => request('codigo')]);
     }
 }

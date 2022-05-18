@@ -18,5 +18,11 @@ class Respuesta extends Model
         $respuesta = ["error" => $this->error, "mensaje" => $this->mensaje, "data" => $this->data];
         return $respuesta;
     }
+    public function setRespuesta($data)
+    {
+        $this->error = $data["error"];
+        $this->mensaje = $data["mensaje"];
+        $this->data = $data["data"];
+    }
 
 }
