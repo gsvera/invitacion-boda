@@ -20,7 +20,7 @@
         <div class="form-group justify-content-center text-center">
             <label class="label-boda" for="codigo">Por favor ingresa tu codigo de invitado</label>
             <input onkeyup="mayusculas(this)" class="form-control my-3 text-center" type="text" name="codigo" id="codigo">
-            <button onclick="validar()" class="btn btn-primary" type="button">Validar</button>
+            <button onclick="validar()" class="btn btndorado" type="button">Validar</button>
         </div>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

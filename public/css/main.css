@@ -1,3 +1,103 @@
+:root{
+    --dorado: #D4AF37;
+    --cafe: #3e2c00;
+    --cafe-claro: #a18262;
+    --gris: #505050;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Handlee&family=Indie+Flower&family=Sen&display=swap');
+
+@font-face{
+    font-family: "IndieFlower-Regular";
+    src:url(/fonts/IndieFlower-Regular.ttf);
+}
+@font-face{
+    font-family: "NanumMyeongjo-Bold";
+    src:url(/fonts/NanumMyeongjo-Bold.ttf);
+}
+@font-face{
+    font-family: "Handlee-Regular";
+    src:u.rl(/fonts/Handlee-Regular.ttf)
+}
+@font-face{
+    font-family: "Sen-Regular";
+    src:url(/fonts/Sen-Regular.ttf)
+}
+.t-caveat{
+    font-family: 'Caveat', cursive;
+}
+.t-nanum{
+    font-family: "NanumMyeongjo-Bold";
+}
+.t-indie-flower{
+    font-family: "IndieFlower-Regular";
+}
+
+.t-handle{
+    font-family: 'Handlee', cursive;
+}
+
+.t-sen{
+    font-family: "Sen-Regular";
+}
+.t-color-cafe{
+    color: var(--cafe);
+}
+.fs-1-1
+{
+    font-size: 1.1em;
+}
+.t-justify
+{
+    text-align: justify;
+}
+.nav-boda{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+@media (min-width:800px)
+{
+    .nav-link-boda{
+        display: block;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    }
+    .d-flex-boda{
+        display: flex;
+    }
+    .d-flex-itinerario
+    {
+        display: flex;
+        margin: 25px auto;
+    }
+}
+@media (max-width:800px)
+{
+    .nav-item-boda{
+        width: 50%;
+        text-align: center;
+        margin-top: 15px;
+    }
+    .nav-link-boda{
+        display: block;
+        text-decoration: none;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    } 
+    .d-flex-boda{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .d-flex-itinerario
+    {
+     
+        margin: 50px auto 0;
+    }
+}
+
 .fondo-novios{
     background-image: url(/img/novios.jpg);
     background-size: cover;
@@ -6,7 +106,6 @@
     width: 100%;
     min-height: 100vh;
     z-index: -100;
-    position: fixed;
     padding-top: 50px;
 }
 .fondo-novios:before{
@@ -16,7 +115,7 @@
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background-color: rgba(0,0,0,0.6);
+	background-color: rgba(0,0,0,0.6);    
 }
 .marco{
     background-image: url(/img/marco-de-ga.png);
@@ -47,6 +146,9 @@
         padding: 7%;
         border-radius: 10px;
     }
+    .minh-400{
+        height: 500px;
+    }
 }
 @media(min-width:800px)
 {
@@ -64,6 +166,16 @@
         border-radius: 10px;
     }
 }
+.foto-novios1{
+    background-image: url(/img/gya.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: 0;
+    width: 100%;
+    min-height: 100%;
+    background-color: var(--cafe);
+}
 .btn-boda
 {
     background: rgb(97,90,90);
@@ -73,4 +185,296 @@
 .label-boda{
     font-weight: bold;
     font-size: 1.3em;
+}
+
+.titulo-novios{
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: white;
+    margin-top: -350px;
+    text-align: center;
+    position: absolute;
+    letter-spacing: 3px;
+    z-index: 100;
+    min-width: 100%;
+}
+.size-max{
+    font-size: 2.8em;
+}
+.size-med{
+    font-size: 1.9em;
+}
+.espacio-texto{
+    background-color: var(--turquesa);
+    height: 300px;
+}
+.menu-boda{
+    position: absolute;
+    min-width: 100%;
+    z-index: 100;
+    padding-top: 30px;
+}
+.text-menu{
+    color: white;
+    font-weight: 100;
+    font-size: 1.2em;
+}
+.titulo-historia{
+    background-color: var(--dorado);
+    color: white;
+    margin: 7px 0;
+    padding: 50px 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+.text-historia
+{
+    background-color: var(--cafe);
+    color: white;
+    text-align: justify;
+    padding: 80px 50px ;
+    min-height: 100%;
+    font-size: 1.2em;
+}
+
+.iniciales{
+    font-size: 2.2em;
+    color: white;
+    font-weight: 100;
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+    margin-bottom: 30px;
+}
+@media(max-width:800px)
+{
+    .casa-ambrosia
+    {
+        background-image: url(/img/casa-ambrosia.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-width: 100%;
+        min-height: 250px;
+    }
+}
+@media(min-width:800px)
+{
+    .casa-ambrosia
+    {
+        background-image: url(/img/casa-ambrosia.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-width: 100%;
+        min-height: 450px;
+    }
+}
+.caja-gris{
+    background-color: var(--gris);
+    height: 250px;
+    padding: 55px 0 0;
+    text-align: center;
+}
+.caja-blanca{
+    height: 250px;
+    padding: 55px 0 0;
+    text-align: center;
+}
+.hora{
+    font-size: 1.8em;
+    color: white;
+}
+.link-mapa, .link-mapa:hover{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+.icono-ubicacion{
+    width: 50px;
+    margin-left: -30px;
+    filter:invert(100);
+}
+.caja-icono{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.icon-recepcion{
+    width: 100px;
+}
+
+.btndorado{
+    background-color: var(--dorado);
+    color: white;
+    width: 300px;
+    height: 45px;
+}
+@media(max-width:800px)
+{
+    .agradecimiento{
+        text-align: justify;
+        font-size: 1.2em;
+        width: 60%;
+        margin: 50px auto;
+        font-weight: 600;
+    }
+    .nosotros-foto{
+        background-image: url(/img/nosotros.jpeg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 500px;
+        margin-top: 7px;
+    }
+    .divisor-cafe{
+        content: "";
+        width: 250px;
+        height: 3px;
+        background-color: var(--cafe);
+        margin: 10px auto;
+    }
+    .t-sm-center{
+        text-align: center;
+    }
+    .mbs-50{
+        margin-bottom: 50px;
+    }
+}
+@media(min-width:800px)
+{
+    .agradecimiento{
+        text-align: justify;
+        font-size: 1.2em;
+        width: 60%;
+        margin: 100px auto;
+        font-weight: 600;
+    }
+    .nosotros-foto{
+        background-image: url(/img/nosotros.jpeg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 500px;
+    }
+    .divisor-cafe{
+        content: "";
+        width: 4px;
+        min-height: 100%;
+        background-color: var(--cafe);
+        margin: 0 15px;
+    }
+}
+
+@media(max-width:520px)
+{
+    .caja-confirmacion{
+        border: 5px solid var(--dorado);
+        padding: 50px 10px;
+        text-align: center;
+        margin: -580px auto;
+        background-color: rgba(0,0,0,.7);
+        z-index: 100;
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 80%;
+        color: white;
+    }
+    .fondo-footer{
+        background-image: url(/img/boda.webp);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 600px;
+        z-index: -100;
+        filter: blur(2px);
+    }
+}
+@media(min-width:520px)
+{
+    .caja-confirmacion{
+        border: 5px solid var(--dorado);
+        padding: 50px 10px;
+        text-align: center;
+        margin: -460px auto;
+        background-color: rgba(0,0,0,.7);
+        z-index: 100;
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 500px;
+        color: white;
+    }
+    .fondo-footer{
+        background-image: url(/img/boda.webp);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 100vh;
+        z-index: -100;
+        filter: blur(2px);
+    }
+}
+.nos-vemos{
+    background-color: var(--cafe-claro);
+    padding: 50px;
+    color: white;
+    font-family: "Sen-Regular";
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.lista-invitados{
+    list-style: none;
+    padding: 0;
+}
+.back-gris{
+    background-color: var(--gris);
+    color: white;
+    margin: 7px 0;
+    padding: 50px 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+.back-gracias{
+    background-color: var(--dorado);
+    color: white;
+    margin: 7px 0;
+    height: 250px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+.corazon{
+    margin-top: 10px;
+    position:relative;
+    width: 30px;
+    height: 30px;
+    margin: 10px 0;
+    filter:invert(100%) opacity(0.8);
+    animation: hit .5s infinite alternate;
+}
+@keyframes hit
+{
+    from { width: 30px; height: 30px; }
+    to { width:50px; height: 50px; }
+}
+
+
+.btn-aceptar{
+    background-color: var(--dorado);
+    color: white;
+    font-weight: 400;
+    font-family: "Sen-Regular";
+}
+.btn-denegar{
+    background-color: var(--gris);
+    color: white;
+    font-weight: 400;
+    font-family: "Sen-Regular";
+}
+.input-size{
+    width: 80%;
 }

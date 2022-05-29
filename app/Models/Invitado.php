@@ -12,7 +12,7 @@ class Invitado extends Model
     private $listaInvitados = [
         [
             "codigo" => "CDG-1",
-            "nombres" => ["Guillermo", "Ana"]
+            "nombres" => ["Guillermo Vera", "Ana Juarez"]
         ],
         [
             "codigo" => "CDG-2",
@@ -41,6 +41,24 @@ class Invitado extends Model
                 $res["error"] = true;
                 $res["data"] = [];
                 $res["mensaje"] = "Codigo de invitado invalido";
+            }
+        }
+
+        return $res;
+    }
+    public function obtenerInvatidos($codigo)
+    {
+        $res = [];
+        foreach($this->listaInvitados as $clave => $valor)
+        {
+            if($valor['codigo'] == $codigo)
+            {
+                $res = $valor['nombres'];
+                break;
+            }
+            else
+            {
+                $res = [];
             }
         }
 
