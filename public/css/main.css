@@ -167,11 +167,12 @@
     }
 }
 .foto-novios1{
-    background-image: url(/img/gya.jpeg);
+    background-image: url(/img/manos-novios.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-position-y: 0;
+    background-position-x: -80px;
     width: 100%;
     min-height: 100%;
     background-color: var(--cafe);
@@ -303,12 +304,21 @@
 .icon-recepcion{
     width: 100px;
 }
-
-.btndorado{
-    background-color: var(--dorado);
-    color: white;
-    width: 300px;
-    height: 45px;
+@media(max-width:800px){
+    .btndorado{
+        background-color: var(--dorado);
+        color: white;
+        width: 100%;
+        height: 35px;
+    }
+}
+@media(min-width:800px){
+    .btndorado{
+        background-color: var(--dorado);
+        color: white;
+        width: 300px;
+        height: 45px;
+    }
 }
 @media(max-width:800px)
 {
@@ -320,8 +330,8 @@
         font-weight: 600;
     }
     .nosotros-foto{
-        background-image: url(/img/nosotros.jpeg);
-        background-size: contain;
+        background-image: url(/img/beso-novios-2.jpeg);
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         min-height: 500px;
@@ -351,7 +361,7 @@
         font-weight: 600;
     }
     .nosotros-foto{
-        background-image: url(/img/nosotros.jpeg);
+        background-image: url(/img/beso-novios-2.jpeg);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -366,7 +376,7 @@
     }
 }
 
-@media(max-width:520px)
+@media(max-width:800px)
 {
     .caja-confirmacion{
         border: 5px solid var(--dorado);
@@ -391,7 +401,7 @@
         filter: blur(2px);
     }
 }
-@media(min-width:520px)
+@media(min-width:800px)
 {
     .caja-confirmacion{
         border: 5px solid var(--dorado);

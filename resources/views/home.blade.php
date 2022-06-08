@@ -64,8 +64,8 @@ $prueba = $codigo;
                     una nueva etapa en nuestras vidas.
                 </p>
                 <p class="t-indie-flower fs-1-1">
-                    Desde el día que nos conocimos había algo que ya nos conectaba, nuestra relación se fue formando con 
-                    con el paso del tiempo, cada día mas fuerte y lleno de amor, algo que hemos trabajado juntos.
+                    Desde el día que nos conocimos había algo que ya nos conectaba, nuestra relación se fue formando 
+                    con el paso del tiempo, cada día más fuerte y lleno de amor, algo que hemos trabajado juntos.
                 </p>
                 <p class="t-indie-flower fs-1-1">
                     Somos aventureros, dedicados, fuertes de carácter. Los desafíos que hemos enfrentado nos han ayudado 
@@ -123,7 +123,7 @@ $prueba = $codigo;
                 <div class="col-md-6 pt-3 t-sm-center">
                     <h4>BODA CIVIL</h4>
                     <p class="font-weight-bold">5:30 - 6:00 pm</p>
-                    <p>Tu compañia en nuestra ceremonia es importante</p>
+                    <p>Tu compañía en nuestra ceremonia es importante</p>
                 </div>
             </div>
             <div class="d-flex-itinerario col-sm-5">
@@ -192,7 +192,7 @@ $prueba = $codigo;
             </ul>
             <p class="t-sen t-justify">
                 Para nosotros es muy importante que nos confirmes tu asistencia, por eso te pedimos nos indiques 
-                dando click en alguno de los siguientes botones, de igual forma te pedimos que ingreses tu correo electronico
+                dando click en alguno de los siguientes botones, de igual forma te pedimos que ingreses tu correo electrónico
                 para hacerte llegar la confirmación.
             </p>
             <input type="text" class="form-control mb-3 mx-auto input-size" id="email-invitadp">
