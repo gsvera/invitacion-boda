@@ -104,18 +104,33 @@
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
     z-index: -100;
     padding-top: 50px;
 }
-.fondo-novios:before{
-    content:'';
-	position: absolute;
-    top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-color: rgba(0,0,0,0.6);    
+@media(min-width:800px)
+{
+    .fondo-novios:before{
+        content:'';
+        position: absolute;
+        top: 0;
+        bottom: 62px;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.6);    
+    }
+}
+@media(max-width:800px)
+{
+    .fondo-novios:before{
+        content:'';
+        position: absolute;
+        top: 0;
+        bottom: 50px;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.6);    
+    }
 }
 .marco{
     background-image: url(/img/marco-de-ga.png);
@@ -192,7 +207,7 @@
     font-family:'Times New Roman', Times, serif;
     font-weight: bold;
     color: white;
-    margin-top: -350px;
+    margin-top: -300px;
     text-align: center;
     position: absolute;
     letter-spacing: 3px;
@@ -223,7 +238,7 @@
 .titulo-historia{
     background-color: var(--dorado);
     color: white;
-    margin: 7px 0;
+    /* margin: 100px 0 0; */
     padding: 50px 0;
     text-align: center;
     display: flex;
@@ -231,7 +246,7 @@
 }
 .text-historia
 {
-    background-color: var(--cafe);
+    background-color: var(--cafe-claro);
     color: white;
     text-align: justify;
     padding: 80px 50px ;
@@ -261,6 +276,9 @@
 }
 @media(min-width:800px)
 {
+    .mgy-100{
+        margin: 100px 0;
+    }
     .casa-ambrosia
     {
         background-image: url(/img/casa-ambrosia.jpg);
@@ -327,7 +345,7 @@
         font-size: 1.2em;
         width: 60%;
         margin: 50px auto;
-        font-weight: 600;
+        /* font-weight: 600; */
     }
     .nosotros-foto{
         background-image: url(/img/beso-novios-2.jpeg);
@@ -358,7 +376,7 @@
         font-size: 1.2em;
         width: 60%;
         margin: 100px auto;
-        font-weight: 600;
+        /* font-weight: 600; */
     }
     .nosotros-foto{
         background-image: url(/img/beso-novios-2.jpeg);

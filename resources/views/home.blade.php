@@ -26,7 +26,7 @@ $prueba = $codigo;
     <title>Document</title>
 </head>
 <body>
-    <div class="menu-boda">
+    <div class="menu-boda d-none">
         <ul class="nav-boda justify-content-center">
             <li class="nav-item nav-item-boda">
                 <a class="nav-link-boda text-menu t-sen" href="#nosotros">NOSOTROS</a>
@@ -100,7 +100,7 @@ $prueba = $codigo;
             </div>
         </div>
     </div>
-    <div class="mt-5">
+    <div class="mgy-100">
         <h2 class="text-center t-caveat t-color-cafe">ITINERARIO</h2>
         <h4 class="text-center t-sen text-secondary">¡Acompañanos en nuestra celebración!</h4>
         <div class="justify-content-center">
@@ -154,8 +154,26 @@ $prueba = $codigo;
         <div class="titulo-historia">
             <div id="agradecimiento" class="mx-auto"><h2 class="t-nanum m-0">AGRADECIMIENTO ESPECIAL</h2></div>
         </div>
+        
         <div class="agradecimiento">
-            Queremos darle un agradecimiento especial a nuestra familia y padrinos que nos apoyaron a que este sueño se haga realidad,
+        <div class="text-center">
+            <p slass="t-justify">Movidos por el amor que nos profesaron y con la alegria y la bendición de nuestros padres:</p>
+            <div class="d-flex justify-content-center my-5">
+                <div class="col-4">
+                    <ul class="lista-invitados t-handle mb-0">
+                        <li>Felipe de Jesus Vera López</li>
+                        <li>Ofelia Morales Iste</li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <ul class="lista-invitados t-handle mb-0">
+                        <li>Azariel Juárez Guzmán</li>
+                        <li>Maria Aribe López Jiménez</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+            Tambien queremos agradecer a nuestras familias y padrinos que nos apoyaron a que este sueño se haga realidad,
             que a lo largo de nuestra vida siempre han estado presente para apoyarnos cuando lo necesitamos, por eso le queremos decir 
             de todo corazón ¡¡¡Muchas Gracias!!!
         </div>
@@ -234,7 +252,7 @@ $prueba = $codigo;
             $("#denegar").click(function(){
                 activeLoader("Denegando...")         
                 setTimeout(() => {
-                    successAlert("Hecho", "Entendemos tu razón por la cual no puedes asistir, pero te agradecemos por hacernos saberlo.")
+                    successAlert("Hecho", "Entendemos tu razón por la cual no puedes asistir, y te agradecemos por hacernos saberlo.")
                 }, 300);
             })
         });
