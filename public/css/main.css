@@ -58,6 +58,12 @@
     margin-bottom: 0;
     list-style: none;
 }
+.color-dorado{
+    color: var(--dorado);
+}
+.t-bold{
+    font-weight: bold;
+}
 @media (min-width:800px)
 {
     .nav-link-boda{
@@ -77,6 +83,9 @@
 }
 @media (max-width:800px)
 {
+    .mgtop50{
+        margin-top:50px;
+    }
     .nav-item-boda{
         width: 50%;
         text-align: center;
@@ -96,6 +105,17 @@
      
         margin: 50px auto 0;
     }
+}
+
+.fondo-novios-principal{
+    background-image: url(/img/novios.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    min-height: 100vh;
+    z-index: -100;
+    padding-top: 50px;
 }
 
 .fondo-novios{
@@ -119,6 +139,16 @@
         right: 0;
         background-color: rgba(0,0,0,0.6);    
     }
+    .fondo-novios-principal:before{
+        content:'';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.6);    
+    }
+    
 }
 @media(max-width:800px)
 {
@@ -127,6 +157,15 @@
         position: absolute;
         top: 0;
         bottom: 50px;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.6);    
+    }
+    .fondo-novios-principal:before{
+        content:'';
+        position: absolute;
+        top: 0;
+        bottom: 0;
         left: 0;
         right: 0;
         background-color: rgba(0,0,0,0.6);    

@@ -5,7 +5,7 @@ use App\Models\Invitado;
 $datosInvitado = new Invitado;
 
 $invitados = $datosInvitado->obtenerInvatidos($codigo);
-
+$respuesta = $datosInvitado->consultarRespuesta($codigo);
 $prueba = $codigo;
 
 @endphp
@@ -23,7 +23,10 @@ $prueba = $codigo;
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/alerts.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <title>Document</title>
+    <script type="text/javascript">
+        window.CSRF_TOKEN = '{{ csrf_token() }}';
+    </script>
+    <title>Invitacion a nuestra boda</title>
 </head>
 <body>
     <div class="menu-boda d-none">
@@ -122,7 +125,7 @@ $prueba = $codigo;
                 <div class="divisor-cafe col-1 col-sm-12"></div>
                 <div class="col-md-6 pt-3 t-sm-center">
                     <h4>BODA CIVIL</h4>
-                    <p class="font-weight-bold">5:30 - 6:00 pm</p>
+                    <p class="font-weight-bold">5:15 - 6:00 pm</p>
                     <p>Tu compañía en nuestra ceremonia es importante</p>
                 </div>
             </div>
@@ -158,17 +161,19 @@ $prueba = $codigo;
         <div class="agradecimiento">
         <div class="text-center">
             <p slass="t-justify">Movidos por el amor que nos profesaron y con la alegria y la bendición de nuestros padres:</p>
-            <div class="d-flex justify-content-center my-5">
-                <div class="col-4">
+            <div class="row justify-content-center my-5">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <h4 class="color-dorado t-bold">Padres del Novio</h4>
                     <ul class="lista-invitados t-handle mb-0">
-                        <li>Felipe de Jesus Vera López</li>
-                        <li>Ofelia Morales Iste</li>
+                        <li class="t-bold">Felipe de Jesus Vera López</li>
+                        <li class="t-bold">Ofelia Morales Iste</li>
                     </ul>
                 </div>
-                <div class="col-4">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 mgtop50">
+                    <h4 class="color-dorado t-bold">Padres de la Novia</h4>
                     <ul class="lista-invitados t-handle mb-0">
-                        <li>Azariel Juárez Guzmán</li>
-                        <li>Maria Aribe López Jiménez</li>
+                        <li class="t-bold">Azariel Juárez Guzmán</li>
+                        <li class="t-bold">Maria Aribe López Jiménez</li>
                     </ul>
                 </div>
             </div>
@@ -208,14 +213,28 @@ $prueba = $codigo;
                     <li class="t-sen"><i class="fa fa-user" aria-hidden="true"></i> {{"$item"}}</li> 
                 @endforeach
             </ul>
-            <p class="t-sen t-justify">
-                Para nosotros es muy importante que nos confirmes tu asistencia, por eso te pedimos nos indiques 
-                dando click en alguno de los siguientes botones, de igual forma te pedimos que ingreses tu correo electrónico
-                para hacerte llegar la confirmación.
-            </p>
-            <input type="text" class="form-control mb-3 mx-auto input-size" id="email-invitadp">
-            <button class="btn btn-aceptar m-1" id="aceptar">Aceptar invitación</button>            
-            <button class="btn btn-denegar m-1" id="denegar">Denegar invitación</button>
+            @switch(true)
+                @case($respuesta == 0)
+                <p class="t-sen t-justify">
+                    Para nosotros es muy importante que nos confirmes tu asistencia, por eso te pedimos nos indiques 
+                    dando click en alguno de los siguientes botones, de igual forma si lo deseas puedes agregar tu correo electrónico
+                    para hacerte llegar la confirmación.
+                </p>
+                <input type="email" class="form-control mb-3 mx-auto input-size" id="email-invitado">
+                <button type="button" class="btn btn-aceptar m-1" id="aceptar" data-codigo="{{$codigo}}">Aceptar invitación</button>            
+                <button type="button" class="btn btn-denegar m-1" id="denegar" data-codigo="{{$codigo}}">Denegar invitación</button>
+                @break
+                @case($respuesta == 1)
+                <p class="t-sen text-center">
+                    Ya has aceptado la invitación previamente
+                </p>
+                @break
+                @case($respuesta == -1)
+                <p class="t-sen text-center">
+                    Haz rechazado la invitación previamente
+                </p>
+                @break
+            @endswitch
         </div>
     </div>
     <div class="back-gracias">
@@ -226,38 +245,6 @@ $prueba = $codigo;
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript">
-
-        $(document).ready(function() {
-            $('a[href^="#"]').click(function() {
-                var destino = $(this.hash);
-                if (destino.length == 0) {
-                destino = $('a[name="' + this.hash.substr(1) + '"]');
-                }
-                if (destino.length == 0) {
-                destino = $('html');
-                }
-                $('html, body').animate({ scrollTop: destino.offset().top -150 }, 200);
-                return false;
-            });
-
-
-            $("#aceptar").click(function(){
-                activeLoader("Aceptando...")         
-                setTimeout(() => {
-                    successAlert("Hecho", "¡¡Se envio su confirmación exitosamente!!")
-                }, 300);
-            })
-
-            $("#denegar").click(function(){
-                activeLoader("Denegando...")         
-                setTimeout(() => {
-                    successAlert("Hecho", "Entendemos tu razón por la cual no puedes asistir, y te agradecemos por hacernos saberlo.")
-                }, 300);
-            })
-        });
-
-
-    </script>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

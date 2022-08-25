@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::post('/invitados', [Controller::class, 'listaInvitados']);
 Route::get('/invitacion', [Controller::class, 'invitacion']);
+Route::post('/enviar-respuesta', [Controller::class, 'enviarEmail']);

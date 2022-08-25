@@ -14,7 +14,7 @@
     <title>Boda G&A</title>
 </head>
 <body>
-    <div class="fondo-novios">
+    <div class="fondo-novios-principal">
         </div>
     <form class="formulario" id="formulario">
         <div class="form-group justify-content-center text-center">
