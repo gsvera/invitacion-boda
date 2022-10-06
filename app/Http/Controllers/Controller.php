@@ -16,6 +16,14 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function prueba()
+    {
+        $invitado = new Invitado;
+        $invitado->clienteById(1);
+exit($invitado);
+        return $invitado;
+    }
+
     public function listaInvitados()
     {
         $respuesta = new Respuesta;
