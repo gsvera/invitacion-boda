@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Invitado extends Model
 {
     use HasFactory;
-    protected $table = "listaInvitado";
-    protected $primaryKey = 'id_invitado';
+    protected $table = "users";
+    // protected $primaryKey = 'id_invitado';
     public $timestamps = false;
 
     private $listaInvitados = [
@@ -218,9 +219,9 @@ class Invitado extends Model
         return $respuesta;
     }
 
-    public function clienteById($id)
+    public function clienteById()
     {
-        $client = $this->find($id);
+        $client = DB::table('users')->get();
 
         return $client;
     }

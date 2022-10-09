@@ -19,8 +19,8 @@ class Controller extends BaseController
     public function prueba()
     {
         $invitado = new Invitado;
-        $invitado->clienteById(1);
-exit($invitado);
+        $result = $invitado->clienteById();
+exit($result);
         return $invitado;
     }
 
