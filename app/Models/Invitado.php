@@ -72,7 +72,7 @@ class Invitado extends Model
         [
             "codigo" => "BDA-INV-M-122",
             "respuesta" => 0,
-            "nombres" => ["Cristobal Leonel Vera Morales", "Carolina", "Lizandro Vera Tun", "Jazmin Ver Tun"]
+            "nombres" => ["Cristobal Leonel Vera Morales", "Carolina Yahira Loeza Salazar", "Lizandro Vera Tun", "Jazmin Ver Tun"]
         ],
         [
             "codigo" => "BDA-INV-M-133",
@@ -87,7 +87,7 @@ class Invitado extends Model
         [
             "codigo" => "BDA-INV-M-155",
             "respuesta" => 0,
-            "nombres" => ["Antonio Vera", "Pastora"]
+            "nombres" => ["Antonio Vera Lopez", "Pastora Ek Colli"]
         ],
         [
             "codigo" => "BDA-INV-M-166",
