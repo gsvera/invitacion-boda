@@ -89,7 +89,7 @@ $prueba = $codigo;
         <div class="mx-auto d-flex">
             <div class="caja-gris col-6">
                 <h3 class="t-sen text-white">Casa Ambrosía Cancún</h3>
-                <p class="t-sen hora">5:00 pm</p>
+                <p class="t-sen hora">5:30 pm</p>
                 <a href="https://www.google.com/maps/place/Casa+Ambros%C3%ADa+Cancun/@21.1265797,-86.8564603,15z/data=!4m5!3m4!1s0x0:0x533b850c1fec0d08!8m2!3d21.1265644!4d-86.8564606" class="link-mapa" target="_blank"> 
                     <img class="icono-ubicacion" src="/img/ubicacion.png" alt="Pastel de boda">
                     Ver en mapa
@@ -114,7 +114,7 @@ $prueba = $codigo;
                 <div class="divisor-cafe col-1 col-sm-12"></div>
                 <div class="col-md-6 pt-3 t-sm-center">
                     <h4>RECEPCIÓN</h4>
-                    <p class="font-weight-bold">5:00 pm</p>
+                    <p class="font-weight-bold">5:30 pm</p>
                     <p>Tu puntualidad es importante para nosotros</p>
                 </div>
             </div>
@@ -125,7 +125,7 @@ $prueba = $codigo;
                 <div class="divisor-cafe col-1 col-sm-12"></div>
                 <div class="col-md-6 pt-3 t-sm-center">
                     <h4>BODA CIVIL</h4>
-                    <p class="font-weight-bold">5:15 - 6:00 pm</p>
+                    <p class="font-weight-bold">6:00 pm - 6:30 pm</p>
                     <p>Tu compañía en nuestra ceremonia es importante</p>
                 </div>
             </div>
@@ -136,7 +136,7 @@ $prueba = $codigo;
                 <div class="divisor-cafe col-1 col-sm-12"></div>
                 <div class="col-md-6 pt-3 t-sm-center">
                     <h4>CENA</h4>
-                    <p class="font-weight-bold">6:00 - 7:00 pm</p>
+                    <p class="font-weight-bold">7:30 - 8:30 pm</p>
                     <p>Cenar juntos hace esta noche especial</p>
                 </div>
             </div>
@@ -147,7 +147,7 @@ $prueba = $codigo;
                 <div class="divisor-cafe col-1 col-sm-12"></div>
                 <div class="col-md-6 pt-3 t-sm-center">
                     <h4>FIESTA</h4>
-                    <p class="font-weight-bold">7:00 - 11:00 pm</p>
+                    <p class="font-weight-bold">8:30 - 11:30 pm</p>
                     <p>Comienza la diversión</p>
                 </div>
             </div>
