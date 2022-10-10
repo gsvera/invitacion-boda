@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Invitado extends Model
 {
     use HasFactory;
-    protected $table = "users";
-    // protected $primaryKey = 'id_invitado';
+    protected $table = "listaInvitado";
     public $timestamps = false;
 
     private $listaInvitados = [
@@ -169,14 +168,16 @@ class Invitado extends Model
     public function validarCodigo($codigo)
     {
         $res = [];
-        foreach($this->listaInvitados as $clave => $valor)
-        {
-            if($valor['codigo'] == $codigo)
+
+        try{
+            
+            $getCodigo = DB::table('codigoInvitado')->where('codigo', $codigo)->get();
+
+            if($getCodigo != null)
             {
                 $res["error"] = false;
-                $res["data"] = $valor;
+                $res["data"] = $getCodigo;
                 $res["mensaje"] = "";
-                break;
             }
             else
             {
@@ -185,23 +186,24 @@ class Invitado extends Model
                 $res["mensaje"] = "Codigo de invitado invalido";
             }
         }
+        catch(Exception $e)
+        {
+            $res["error"] = true;
+            $res["data"] = [];
+            $res["mensaje"] = $e->getMessage();
+        }     
 
         return $res;
     }
     public function obtenerInvatidos($codigo)
     {
         $res = [];
-        foreach($this->listaInvitados as $clave => $valor)
+
+        $lista = $this->leftJoin('codigoInvitado as ci', 'ci.id', 'listaInvitado.id_invitacion')->select('nombre')->where('ci.codigo', $codigo)->get();
+
+        if($lista != null)
         {
-            if($valor['codigo'] == $codigo)
-            {
-                $res = $valor['nombres'];
-                break;
-            }
-            else
-            {
-                $res = [];
-            }
+            $res["nombres"] = $lista;
         }
 
         return $res;
@@ -209,20 +211,31 @@ class Invitado extends Model
     public function consultarRespuesta($codigo)
     {
         $respuesta = 0;
-        foreach($this->listaInvitados as $clave => $valor)
-        {
-            if($valor['codigo'] == $codigo)
+        
+        try{
+            $estatusCodigo = DB::table('codigoInvitado')->where('codigo',$codigo)->first();
+
+            if($estatusCodigo != null)
             {
-                $respuesta = $valor['respuesta'];
+                $respuesta = $estatusCodigo->respuesta;
             }
+        }
+        catch(Exception $e)
+        {
+
         }
         return $respuesta;
     }
-
-    public function clienteById()
+    public function actualizarRespuesta($respuesta, $codigo)
     {
-        $client = DB::table('users')->get();
+        $valor = $respuesta=="aceptada" ? 1 : -1;
 
-        return $client;
+        try{            
+            $codigoInvitado = DB::table('codigoInvitado')->where('codigo', $codigo)->update(['respuesta' => $valor]);            
+        }
+        catch(Exception $e)
+        {
+
+        }
     }
 }

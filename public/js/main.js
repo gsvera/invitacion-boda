@@ -56,7 +56,6 @@ function EnviarCorreo(codigo, respuesta)
     })
     .then(res => res.json())
     .then(resp => {
-        console.log(resp)
         closeAlert()
         if(resp.respuesta == "aceptada")
         {
@@ -66,5 +65,9 @@ function EnviarCorreo(codigo, respuesta)
         {
             successAlert("Hecho", "Entendemos tu razón por la cual no puedes asistir, y te agradecemos por hacernos saberlo.")
         }
+        setTimeout(function()
+        {
+            window.location.reload()
+        }, 2000)
     })
 }

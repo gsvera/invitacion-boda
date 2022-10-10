@@ -132,7 +132,9 @@
         <h4 class="text-center font-texto" style="margin-top: 50px;">Lista de invitados</h4>
         <ul class="list-group list-group-flush">
             @foreach($ListaInvitados as $invitados)
-            <li class="list-group-item font-texto"><strong class="text-secondary"></strong><b>{{"$invitados"}}</b></li>
+                @foreach($invitados as $item)
+                    <li class="list-group-item font-texto"><strong class="text-secondary"></strong><b>{{$item->nombre}}</b></li>
+                @endforeach
             @endforeach
         </ul>
         <div class="back-gracias">

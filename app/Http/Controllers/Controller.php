@@ -20,7 +20,7 @@ class Controller extends BaseController
     {
         $invitado = new Invitado;
         $result = $invitado->clienteById();
-exit($result);
+
         return $invitado;
     }
 
@@ -60,6 +60,9 @@ exit($result);
         $invitado = new Invitado;
         $lista = $invitado->obtenerInvatidos(request('codigo'));
         $respuesta = request('respuesta');
+
+        $invitado->actualizarRespuesta($respuesta, request('codigo'));
+
         $subject = "Invitación ".$respuesta." codigo: ".request('codigo');
         $emailInvitado = request('email');
         $datosMensaje = [

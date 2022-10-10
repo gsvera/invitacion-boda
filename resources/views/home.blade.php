@@ -210,7 +210,9 @@ $prueba = $codigo;
             <h3>Invitamos a:</h3>
             <ul class="lista-invitados">
                 @foreach($invitados as $item)
-                    <li class="t-sen"><i class="fa fa-user" aria-hidden="true"></i> {{"$item"}}</li> 
+                    @foreach($item as $inv)
+                        <li class="t-sen"><i class="fa fa-user" aria-hidden="true"></i> {{$inv->nombre}}</li> 
+                    @endforeach
                 @endforeach
             </ul>
             @switch(true)
