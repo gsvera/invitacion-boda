@@ -17,6 +17,21 @@ $prueba = $codigo;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:url" content="https://fierce-river-72268.herokuapp.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Boda G & A" />
+    <meta property="og:description" content="Nuestra boda G & A" />   
+    <meta property="og:image" content="" />
+   
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content=""/>
+    <meta name="twitter:creator" content=""/>
+    <meta name="twitter:title" content="Nuestra boda de Guillermo & Ana"/>
+    <meta name="twitter:description" content="Nuestra boda de Guillermo & Ana"/>
+    <meta name="twitter:image" content="https://fierce-river-72268.herokuapp.com/img/novios.jpg"/>
+    <meta name="twitter:domain" content="https://fierce-river-72268.herokuapp.com/"/>
+
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <script src="https://use.fontawesome.com/97a88bff0a.js"></script>
@@ -26,7 +41,7 @@ $prueba = $codigo;
     <script type="text/javascript">
         window.CSRF_TOKEN = '{{ csrf_token() }}';
     </script>
-    <title>Invitacion a nuestra boda</title>
+    <title>Boda G & A</title>
 </head>
 <body>
     <div class="menu-boda d-none">
