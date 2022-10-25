@@ -6,7 +6,6 @@ $datosInvitado = new Invitado;
 
 $invitados = $datosInvitado->obtenerInvatidos($codigo);
 $respuesta = $datosInvitado->consultarRespuesta($codigo);
-$prueba = $codigo;
 
 @endphp
 

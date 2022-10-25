@@ -16,14 +16,6 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function prueba()
-    {
-        $invitado = new Invitado;
-        $result = $invitado->clienteById();
-
-        return $invitado;
-    }
-
     public function listaInvitados()
     {
         $respuesta = new Respuesta;
@@ -54,6 +46,22 @@ class Controller extends BaseController
             return "Exception: ".$e->getMessage();
         }
         return view('home', ['codigo' => request('codigo')]);
+    }
+    public function mesaRegalos()
+    {
+        $invitado = new Invitado;
+        try{
+            $validar = $invitado->validarCodigo(request('codigo'));
+            if($validar["error"] == true)
+            {
+                return view("index");
+            }
+        }
+        catch(Exception $e)
+        {
+            return "Exception: ".$e->getMessage();
+        }
+        return view("mesaregalos", ["codigo" => request('codigo')]);
     }
     public function enviarEmail()
     {
