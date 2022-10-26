@@ -71,3 +71,69 @@ function EnviarCorreo(codigo, respuesta)
         }, 2000)
     })
 }
+
+
+//                  MESA DE REGALOS SCRIPTS
+
+
+let imgs = document.getElementsByClassName('img-regalo'),
+btns = document.getElementsByClassName('btn-regalo')
+
+for(let i = 0; i < imgs.length; i++)
+{
+    imgs[i].addEventListener('click', function(e)
+    {
+        seleccionarArticulo(i)
+    })
+}
+
+for(let i = 0; i < btns.length; i++)
+{
+    btns[i].addEventListener('click', function(e)
+    {
+        seleccionarArticulo(i)
+    })
+}
+
+function seleccionarArticulo(id)
+{
+    $('#imgModal').modal('show')
+        document.getElementById('imgmodalback').style.backgroundImage = 'url("'+imgs[id].dataset.img+'")'
+        document.getElementById('articulo').value = imgs[id].dataset.nombre
+}
+
+$('#confirmArticulo').click(function(){
+
+    let register = {}
+    register.codigoInvitado = $('#codigo').val()
+    register.nombreArticulo = $('#articulo').val()
+
+    activeLoader("Aceptando...")       
+
+    fetch('/confirmar-articulo',{
+        method:'post',
+        body: JSON.stringify(register),
+        headers:headConexion
+    })
+    .then(res => res.json())
+    .then(resp => {
+        closeAlert()
+        console.log(resp)
+        if(resp.error == false)
+        {
+            successAlert("Hecho", "¡¡Se confirmo tu elección exitosamente!!")
+        }
+        else
+        {
+            errorAlert("Error", "Algo ocurrio intentelo mas tarde")
+        }
+        setTimeout(function()
+        {
+            window.location.reload()
+        }, 2000)
+    })
+})
+
+$("#closeModal").click(function(){
+    $('#imgModal').modal('hide')
+})

@@ -293,6 +293,10 @@
     font-size: 1.2em;
 }
 
+.text-dorado{
+    color: var(--dorado);
+}
+
 .iniciales{
     font-size: 2.2em;
     color: white;
@@ -536,6 +540,12 @@
     font-weight: 400;
     font-family: "Sen-Regular";
 }
+.btn-dorado{
+    background-color: var(--dorado);
+    color: white;
+    font-weight: 400;
+    font-family: "Sen-Regular";
+}
 .btn-denegar{
     background-color: var(--gris);
     color: white;
@@ -553,6 +563,25 @@
     height: 300px;
     cursor: pointer;
 }
+
+.img-regalo-elegido{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 250px;
+    height: 300px;
+    cursor: pointer;
+}
+.img-regalo-elegido:before{
+    content:'';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.6);    
+}
+
 .imgmodalback{
     background-size: contain;
     background-repeat: no-repeat;
@@ -562,4 +591,14 @@
 }
 .font-bold{
     font-weight: bold;
+}
+.icono-regalos
+{
+    background-image: url(/img/mesa-regalos.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
 }

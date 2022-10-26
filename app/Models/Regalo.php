@@ -37,4 +37,31 @@ class Regalo extends Model
         }
         return $lista;
     }
+    public function elegirArticulo($nombreregalo, $codigoInvitado)
+    {
+        $elegido = false;
+        try{
+            $articulo = $this->where('nombreregalo', $nombreregalo)->first();
+            $articulo->codigoinvitado = $codigoInvitado;
+            $articulo->save();
+            $elegido = true;
+        }
+        catch(Exception $e)
+        {
+            $elegido = false;
+        }
+        return $elegido;
+    }
+    public function obtenerPorCodigo($codigo)
+    {
+        $registro = new Regalo;
+        try{
+            $registro = $this->where('codigoinvitado', $codigo)->first();
+        }
+        catch(Exception $e)
+        {
+
+        }
+        return $registro;
+    }
 }

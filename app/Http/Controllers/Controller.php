@@ -11,6 +11,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 use App\Models\Invitado;
 use App\Models\Respuesta;
+use App\Models\Regalo;
 
 class Controller extends BaseController
 {
@@ -62,6 +63,25 @@ class Controller extends BaseController
             return "Exception: ".$e->getMessage();
         }
         return view("mesaregalos", ["codigo" => request('codigo')]);
+    }
+    public function confirmarArticulo()
+    {
+        $respuesta = new Respuesta;
+        $regalo = new Regalo;
+        try{
+            $elegir = $regalo->elegirArticulo(request('nombreArticulo'), request('codigoInvitado'));
+            if($elegir == true)
+            {
+                $respuesta->error = false;
+                $respuesta->mensaje = "Se eligio el articulo con exito";
+            }
+        } 
+        catch(Exception $e)
+        {
+            $respuesta->error = true;
+            $respuesta->mensaje = $e->getMessage();
+        }
+        return response()->json($respuesta->obtenerRespuesta());
     }
     public function enviarEmail()
     {

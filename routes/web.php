@@ -21,3 +21,4 @@ Route::post('/invitados', [Controller::class, 'listaInvitados']);
 Route::get('/invitacion', [Controller::class, 'invitacion']);
 Route::get('/mesa-de-regalos', [Controller::class, 'mesaRegalos']);
 Route::post('/enviar-respuesta', [Controller::class, 'enviarEmail']);
+Route::post('/confirmar-articulo', [Controller::class, 'confirmarArticulo']);

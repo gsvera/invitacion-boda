@@ -54,11 +54,21 @@ class Invitado extends Model
             "respuesta" => 0,
             "nombres" => ["Brenda Lizette Sulub Peraza"]
         ],
-        // [
-        //     "codigo" => "BDA-INV-09",
-        //     "respuesta" => 0,
-        //     "nombres" => ["Enedina Berenice Ramirez Perea", "Antonio Jesus Ceme Duarte"]
-        // ],
+        [
+            "codigo" => "BDA-INV-0992",
+            "respuesta" => 0,
+            "nombres" => ["Enedina Berenice Ramirez Perea", "Antonio Jesus Ceme Duarte"]
+        ],
+        [
+            "codigo" => "BDA-INV-182",
+            "respuesta" => 0,
+            "nombres" => ["Loren Colli Martinez"]
+        ],
+        [
+            "codigo" => "BDA-INV-0992",
+            "respuesta" => 0,
+            "nombres" => ["Bry'an Adan Oliveros Galeana", "Dannier Flores Ramos"]
+        ],
         // [
         //     "codigo" => "BDA-INV-10",
         //     "respuesta" => 0,

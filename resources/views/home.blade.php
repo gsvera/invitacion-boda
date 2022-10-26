@@ -253,6 +253,15 @@ $respuesta = $datosInvitado->consultarRespuesta($codigo);
             @endswitch
         </div>
     </div>
+    <div class="back-gris row">
+        <div>
+            <h3 class="text-center text-white">Te invitamos a visitar nuestra mesa de regalos</h3>
+        </div>
+        <div class="mt-4">
+            <button class="btn btn-dorado" onclick='irmesaRegalos("{{$codigo}}")'>Ir a la mesa de regalos</button>
+        </div>
+        <div class="icono-regalos mx-auto" onclick='irmesaRegalos("{{$codigo}}")'></div>
+    </div>
     <div class="back-gracias">
         <div class="mx-auto">
             <h2 class="t-nanum m-0">¡GRACIAS POR ASISTIR!</h2>
@@ -262,5 +271,11 @@ $respuesta = $datosInvitado->consultarRespuesta($codigo);
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script type="text/javascript">
+        function irmesaRegalos(codigo)
+        {
+            window.location.href = "/mesa-de-regalos?codigo="+codigo   
+        }
+    </script>
 </body>
 </html>
