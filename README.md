@@ -1,61 +1,213 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
+using System.Security.Cryptography;
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+namespace Mifiel
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(ConsultaApi());
+            Console.ReadKey();
+        }
 
-## About Laravel
+        public static string ConsultaApi()
+        {
+            Objeto obj = new Objeto();
+            obj.name = "Guillermo Salvador Vera Morales";
+            obj.email = "gs.vera92@gmail.com";
+            var data = Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(obj));
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+            //var request = (HttpWebRequest)WebRequest.Create("http://127.0.0.1:8000/api/prueba-api");
+            var request = (HttpWebRequest)WebRequest.Create("https://candidates.mifiel.com/api/v1/users");
+            request.ContentType = "application/json; charset=utf-8";
+            request.Method = "POST";
+            request.ContentLength = data.Length;
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+            var response = (HttpWebResponse)request.GetResponse();
 
-## Learning Laravel
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            //Objeto nuevoObj = JsonConvert.DeserializeObject<Objeto>(responseString);
+            var trans = JsonConvert.DeserializeObject<dynamic>(responseString);
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+            Respuesta newObjeto = JsonConvert.DeserializeObject<Respuesta>(responseString);
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+            string idUser = newObjeto.id;
+            PutMifiel mifiel = new PutMifiel
+            {
+                result = nuevohash(newObjeto.next_challenge.challenge),
+                id = idUser
+            };
 
-## Laravel Sponsors
+            string respuesta = ActualizarMifiel(mifiel);
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+            mifiel.result = TransformarHas(newObjeto.next_challenge.challenge, 1);
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+            return respuesta;
+        }
 
-## Contributing
+        public static string ActualizarMifiel(PutMifiel mifiel)
+        {
+            var data = Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(mifiel));
+            string url = "https://candidates.mifiel.com/api/v1/users/" + mifiel.id + "/challenge/digest";
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.ContentType = "application/json; charset=utf-8";
+            request.Method = "PUT";
+            request.ContentLength = data.Length;
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+            String prueba = nuevohash("6e7323bdb1ca725cc6c9571060304250");
+            HttpWebResponse resp = (HttpWebResponse)request.GetResponse();
 
-## Code of Conduct
+            var responseString = new StreamReader(resp.GetResponseStream()).ReadToEnd();
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+            RespuestaDos respuesta = JsonConvert.DeserializeObject<RespuestaDos>(responseString);
+            PutMifiel nuevoMifiel = new PutMifiel()
+            {
+                result = nuevohashDos(respuesta.next_challenge.challenge, respuesta.next_challenge.difficulty),
+                id = mifiel.id
+            };
 
-## Security Vulnerabilities
+            ActualizarPOW(nuevoMifiel);
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+            return responseString;
+        }
 
-## License
+        public static string ActualizarPOW(PutMifiel mifiel)
+        {
+            var data = Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(mifiel));
+            var url = "https://candidates.mifiel.com/api/v1/users/"+mifiel.id+"/challenge/pow";
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.ContentType = "application/json; charset=utf-8";
+            request.Method = "PUT";
+            request.ContentLength = data.Length;
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            var resp = (HttpWebResponse)request.GetResponse();
+
+            var responseString = new StreamReader(resp.GetResponseStream()).ReadToEnd();
+
+            return responseString;
+        }
+
+        public static string nuevohash(string texto)
+        {
+            SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
+
+            byte[] inputBytes = Encoding.UTF8.GetBytes(texto);
+            byte[] hashedBytes = provider.ComputeHash(inputBytes);
+
+            StringBuilder output = new StringBuilder();
+
+            for (int i = 0; i < hashedBytes.Length; i++)
+                output.Append(hashedBytes[i].ToString("x2").ToLower());
+
+            return output.ToString();
+        }
+        public static string nuevohashDos(string texto, string difficult)
+        {
+            SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
+
+            byte[] inputBytes = Encoding.UTF8.GetBytes(texto);
+            byte[] hashedBytes = provider.ComputeHash(inputBytes);
+
+            StringBuilder output = new StringBuilder();
+
+            for (int i = 0; i < hashedBytes.Length; i++)
+                output.Append(hashedBytes[i].ToString("x"+difficult).ToLower());
+
+            return output.ToString();
+        }
+        public static string TransformarHas(string texto, int numero)
+        {
+            string result = String.Empty;
+
+            using (SHA256 sha = SHA256.Create())
+            {
+
+                byte[] hasvalue = sha.ComputeHash(Encoding.UTF8.GetBytes(texto));
+
+                foreach (byte b in hasvalue)
+                {
+                    result += $"{b:x}" + numero;
+                }
+            }
+
+            return result;
+        }
+
+        public static string TransformarHas(string texto)
+        {
+            string result = String.Empty;
+
+            using (SHA256 sha = SHA256.Create())
+            {
+
+                byte[] hasvalue = sha.ComputeHash(Encoding.UTF8.GetBytes(texto));
+
+                foreach (byte b in hasvalue)
+                {
+                    result += $"{b:x}";
+                }
+            }
+
+            return result;
+        }
+
+    }
+    class Objeto {
+        public string name;
+        public string email;
+    }
+
+    class Respuesta
+    {
+        public bool success;
+        public string id;
+        public string message;
+        public nextChallenge next_challenge;
+    }
+    class RespuestaDos
+    {
+        public bool succes;
+        public nextChallenge2 next_challenge;
+    }
+    class nextChallenge
+    {
+        public string name;
+        public string challenge;
+        public bool solved;
+    }
+    class nextChallenge2
+    {
+        public string name;
+        public string challenge;
+        public string difficulty;
+        public bool solved;
+    }
+    class PutMifiel
+    {
+        public string result;
+        public string id;
+    }
+}
